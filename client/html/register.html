@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <style>
+        body{
+            background:white;
+            padding:2rem;
+        }
+        .row{
+            margin:10px;
+        }
+        .input{
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #e9e9e9;
+            border-radius: 2px;
+            outline: none;
+            box-sizing: border-box;
+        }
+        button{
+            border: none;
+            padding: .5rem 1.3rem;
+            width: 100%;
+            height: 40px;
+            color: #fff;
+            background-color: #007fff;
+            border-radius: 2px;
+            outline: none;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .errorMsg{
+            color:red;
+        }
+        </style>
+        <script src="/js/zepto.min.js"></script>
+    </head>
+<body>
+    <div>
+            <div class="row errorMsg"></div>
+        <div class="row"><input id="userName" maxlength="64" placeholder="请输入用户名" class="input"> </div>
+        <div class="row"><input id="nickName" maxlength="64" placeholder="请输入昵称" class="input"> </div>
+        <div class="row"><input id="password" type="password" maxlength="64" placeholder="请输入密码" class="input"> </div>
+        <div class="row"><input id="password2" type="password" maxlength="64" placeholder="再次输入密码" class="input"> </div>
+        <div class="row" style="margin-top:20px;"><button id="btn_reg"  class="btn">注册</button></div>
+    </div>
+</body>
+<script>
+function doReg(){
+    var params={
+        userName:$("#userName").val(),
+        nickName:$("#nickName").val(),
+        password:$("#password").val()
+    }
+    if(params.userName=="" || params.password==""){
+        $(".errorMsg").html("用户名密码不能为空")
+        return ;
+    }else  if(params.password!=$("#password2").val()){
+        $(".errorMsg").html("两次密码不一致")
+        return ;
+    }
+    $.post("/admin/register",params,function (e){
+        if(e.code=="OK"){
+            //parent.Dialog.close();
+            alert("注册成功，请重新登录")
+            parent.location.reload()
+        }else{
+            $(".errorMsg").html(e.msg)
+        }
+    })
+}
+$(function (){
+    $("#btn_reg").click(function (){
+        debugger;
+        doReg();
+    }
+    );
+})
+
+</script>
+</html>

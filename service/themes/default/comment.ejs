@@ -1,0 +1,58 @@
+<div>
+    <div>评论：</div>
+    <div class="comment_add">
+    <textarea id="txt_comment" maxlength="512"></textarea> <button id="btn_comment" aid="<%=articleId%>">评论</button>
+    </div>
+
+    <ul>
+        
+    <%for(var i=0;i<commentList.length;i++){%>
+        <li class="comment">
+            <div>
+               <span class="user"></span>
+               <span> <%=commentList[i].author%>-<%=this.server.getRelativeDate(new Date(commentList[i].createTime))%></span>
+                
+               <% if(userInfo && (commentList[i].userId==userInfo.userId || userInfo.userType==1)){%>
+               <span><a href="javascript:deleteComment(<%=commentList[i].id%>)">[delete]</a></span>
+               <%}%>
+            </div>
+            <div class="content">
+            <%=commentList[i].content%>
+            </div>
+        </li>
+    <%}%>
+    </ul>   
+
+    <script>
+        function deleteComment(id){
+            if(window.confirm("确认要删除此评论吗？删除后不可恢复")){
+                $.post("/comment.delete",{
+                    id:id
+                },function (e){
+                    
+                    if(e.code=="NotLogin"){
+                        alert("请登录")
+                    }else{
+                        window.location.reload();
+                    }
+                })
+            }
+        }
+
+        $("#btn_comment").click (function (){
+            var articleId=$(this).attr("aid");
+            var content=$("#txt_comment").val();
+            $.post("/comment.add",{
+                articleId:articleId,
+                content:content
+            },function (e){
+                
+                if(e.code=="NotLogin"){
+                    alert("请登录")
+                }else{
+                    window.location.reload();
+                }
+            })
+        })
+    </script>
+</div>

@@ -1,0 +1,45 @@
+a{
+    color: #9d3f9f;
+    text-decoration: none;
+}
+
+.header {
+    color:white;
+    height:80px;
+    line-height:80px;
+    background: url(../images/bg.png)  repeat-y top center;
+    background-size: contain;
+
+}
+.header a{
+    color:white;
+}
+.nav{
+    width: 90%;
+    margin: auto;
+    position: relative;
+}
+
+.tagItem{
+    background: #d3298a;
+    padding:1px 15px 3px;
+    border-radius: 15px;
+    line-height:40px;
+    color:white;
+    font-size:12px;
+}
+.page{margin:10px 5px;}
+.page a{
+    padding: 5px 15px;
+    display: inline-block;
+    border-radius: 2px;
+    color:black;
+    background: #DDE3E7;
+}
+.page a:hover{
+    color:orangered;
+}
+.page .current{
+    background:#209fd6;
+    color:white;
+}
