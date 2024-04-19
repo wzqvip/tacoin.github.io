@@ -43,15 +43,15 @@ webspark是使用node.js开发的博客系统，支持 mysql,sqlite两种数据�
 ![commet](https://raw.githubusercontent.com/windyfancy/webspark/master/screenshot/9.png)
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: flex-start;">
-  <div style="flex-basis: 40%; max-width: 100%;">
+  <div style="flex-basis: 40%; max-width: 50%;">
     <img src="screenshot/1.png" alt="图片1" style="max-width: 100%; height: auto;" /><br />
     图片1标题
   </div>
-  <div style="flex-basis: 40%; max-width: 100%;">
+  <div style="flex-basis: 40%; max-width: 50%;">
     <img src="screenshot/2.png" alt="图片2" style="max-width: 100%; height: auto;" /><br />
     图片2标题
   </div>
-  <div style="flex-basis: 40%; max-width: 100%;">
+  <div style="flex-basis: 40%; max-width: 50%;">
     <img src="screenshot/3.png" alt="图片3" style="max-width: 100%; height: auto;" /><br />
     图片3标题
   </div>
