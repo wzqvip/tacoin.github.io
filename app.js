@@ -4,15 +4,15 @@ if(!fs.existsSync("./database/spark.db") && fs.existsSync("./database/spark.db.b
   fs.copyFileSync("./database/spark.db.bak","./database/spark.db");
 }
 
-const {Application} = require('webcontext');
-const app = new Application();
+var WebContext=require("webcontext");
+var app=new WebContext();
 
 app.mixin({
   checkPermission(userType){
     return new Promise((resolve)=>{
       this.session.load().then((session)=>{
         this.sessionData=session;//缓存起来，后面可以直接用
-        if(session["userName"] && session["userName"]=="admin"){
+        if(session["userName"] && session["userType"]<=userType){
             resolve(true);
             return ;
         }else{
